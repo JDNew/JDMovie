@@ -7,8 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.jdnew.jdmovie.R;
 import com.example.jdnew.jdmovie.adapter.CityAdapter;
-import com.example.jdnew.jdmovie.base.BaseActivity;
-import com.example.jdnew.jdmovie.base.CityPresenter;
+import com.example.jdnew.jdmovie.presenter.CityPresenter;
 import com.example.jdnew.jdmovie.model.CityBean;
 import com.example.jdnew.jdmovie.view.ICityView;
 
@@ -33,6 +32,8 @@ public class CityActivity extends BaseActivity implements ICityView {
         setListener();
 
 
+
+
     }
 
     @Override
@@ -40,6 +41,7 @@ public class CityActivity extends BaseActivity implements ICityView {
 
         rl_city = (RecyclerView) findViewById(R.id.rl_city);
         initToolbar();
+        hideToolbarNavigationIcon();
 
     }
 

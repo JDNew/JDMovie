@@ -1,13 +1,17 @@
 package com.example.jdnew.jdmovie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.jdnew.jdmovie.R;
+import com.example.jdnew.jdmovie.activity.MainActivity;
+import com.example.jdnew.jdmovie.common.Constant;
 import com.example.jdnew.jdmovie.model.CityBean;
+import com.example.jdnew.jdmovie.util.SharedUtil;
 
 import java.util.List;
 
@@ -42,7 +46,10 @@ public class CityAdapter extends RecyclerView.Adapter<CityViewHolder> {
         holder.setItemClickListener(new CityViewHolder.ItemClickListener() {
             @Override
             public void onClick(int adapterPosition) {
-
+                SharedUtil.putBoolean(mContext , "chooseCity" , true);
+                SharedUtil.putString(mContext , Constant.SHARED_CITY_NAME, mCityList.get(adapterPosition).getN());
+                SharedUtil.putInt(mContext , Constant.SHARED_CITY_ID, mCityList.get(adapterPosition).getId());
+                mContext.startActivity(new Intent(mContext , MainActivity.class));
             }
 
             @Override

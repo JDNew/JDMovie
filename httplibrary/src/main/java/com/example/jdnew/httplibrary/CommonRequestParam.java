@@ -10,12 +10,16 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class CommonRequestParam {
 
-    ConcurrentHashMap<String , String> urlParams = new ConcurrentHashMap<>();
+    ConcurrentHashMap<String , String> urlParams ;
     public CommonRequestParam(){
-
+        urlParams = new ConcurrentHashMap<>();
     }
 
     public void put(@NonNull String key , @NonNull String value){
        urlParams.put(key , value);
+    }
+
+    public void put(@NonNull String key , @NonNull int value){
+        urlParams.put(key , String.valueOf(value));
     }
 }

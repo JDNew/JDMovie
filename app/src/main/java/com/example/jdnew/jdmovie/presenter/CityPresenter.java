@@ -1,4 +1,4 @@
-package com.example.jdnew.jdmovie.base;
+package com.example.jdnew.jdmovie.presenter;
 
 import android.app.Activity;
 
@@ -14,7 +14,7 @@ import com.google.gson.Gson;
  * Created by JDNew on 2017/8/30.
  */
 
-public class CityPresenter implements BasePresenter{
+public class CityPresenter implements BasePresenter {
 
     private Activity mContext;
     private ICityView mICityView;

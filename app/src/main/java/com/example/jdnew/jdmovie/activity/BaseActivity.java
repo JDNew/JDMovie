@@ -1,4 +1,4 @@
-package com.example.jdnew.jdmovie.base;
+package com.example.jdnew.jdmovie.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -33,32 +33,54 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void initToolbar(){
-        if (mToolbar == null) {
+        if (!toobarIsNotNull()) {
             mToolbar = (Toolbar) findViewById(R.id.tb_title);
+            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
         }
     }
 
     protected void setTitle(String title){
-        if (mToolbar != null) {
+        if (toobarIsNotNull()) {
             mToolbar.setTitle(title);
         }
     }
 
     protected void showToolbar(){
-        if (mToolbar != null) {
+        if (toobarIsNotNull()) {
             mToolbar.setVisibility(View.VISIBLE);
         }
     }
 
     protected void hideToolbar(){
-        if (mToolbar != null) {
+        if (toobarIsNotNull()) {
             mToolbar.setVisibility(View.GONE);
         }
     }
 
-    protected void setNavigationIcon(@DrawableRes int resId){
-        if (mToolbar != null) {
+    protected void setToolbarNavigationIcon(@DrawableRes int resId){
+        if (toobarIsNotNull()) {
             mToolbar.setNavigationIcon(resId);
+        }
+    }
+
+    protected void hideToolbarNavigationIcon(){
+        if (toobarIsNotNull()) {
+            mToolbar.setNavigationIcon(null);
+        }
+    }
+
+
+
+    private boolean toobarIsNotNull(){
+        if (mToolbar != null) {
+            return true;
+        }else {
+            return false;
         }
     }
 
