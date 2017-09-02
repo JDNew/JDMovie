@@ -40,7 +40,7 @@ public class WelcomePresenter implements BasePresenter {
                }
                mContext.finish();
            }
-       } , 2000);
+       } , 3000);
 
     }
 }
