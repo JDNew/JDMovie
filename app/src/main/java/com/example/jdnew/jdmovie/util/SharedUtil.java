@@ -51,4 +51,9 @@ public class SharedUtil {
         init(context);
         return sharedPreferences.getBoolean(key , false);
     }
+
+    public static String getString(Context context , String key){
+        init(context);
+        return sharedPreferences.getString(key , null);
+    }
 }

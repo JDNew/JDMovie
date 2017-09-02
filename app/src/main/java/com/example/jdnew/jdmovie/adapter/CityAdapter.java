@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 import com.example.jdnew.jdmovie.R;
 import com.example.jdnew.jdmovie.activity.MainActivity;
 import com.example.jdnew.jdmovie.common.Constant;
+import com.example.jdnew.jdmovie.common.SharedCenter;
 import com.example.jdnew.jdmovie.model.CityBean;
 import com.example.jdnew.jdmovie.util.SharedUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,12 +24,18 @@ import java.util.List;
 public class CityAdapter extends RecyclerView.Adapter<CityViewHolder> {
 
     private Context mContext;
-    private List<CityBean.PBean> mCityList;
+    private List<CityBean.PBean> mCityList = new ArrayList<>();
     private LayoutInflater mLayoutInflater;
 
     public CityAdapter(Context context, List<CityBean.PBean> cityList) {
         this.mContext = context;
         this.mCityList = cityList;
+        this.mLayoutInflater = LayoutInflater.from(mContext);
+
+    }
+
+    public CityAdapter(Context context) {
+        this.mContext = context;
         this.mLayoutInflater = LayoutInflater.from(mContext);
 
     }
@@ -46,9 +54,10 @@ public class CityAdapter extends RecyclerView.Adapter<CityViewHolder> {
         holder.setItemClickListener(new CityViewHolder.ItemClickListener() {
             @Override
             public void onClick(int adapterPosition) {
-                SharedUtil.putBoolean(mContext , "chooseCity" , true);
-                SharedUtil.putString(mContext , Constant.SHARED_CITY_NAME, mCityList.get(adapterPosition).getN());
-                SharedUtil.putInt(mContext , Constant.SHARED_CITY_ID, mCityList.get(adapterPosition).getId());
+                SharedCenter.putHaveChooseCity(mContext , true);
+                SharedCenter.putCityName(mContext , mCityList.get(adapterPosition).getN());
+                SharedCenter.putCityId(mContext , mCityList.get(adapterPosition).getId());
+
                 mContext.startActivity(new Intent(mContext , MainActivity.class));
             }
 
@@ -64,6 +73,13 @@ public class CityAdapter extends RecyclerView.Adapter<CityViewHolder> {
     @Override
     public int getItemCount() {
         return mCityList.size();
+    }
+
+    public void updateData(List<CityBean.PBean> cityList){
+        this.mCityList.clear();
+        this.mCityList.addAll(cityList);
+        notifyDataSetChanged();
+
     }
 
 

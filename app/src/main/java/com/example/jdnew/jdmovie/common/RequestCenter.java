@@ -1,4 +1,4 @@
-package com.example.jdnew.jdmovie.http;
+package com.example.jdnew.jdmovie.common;
 
 import com.example.jdnew.httplibrary.CommonCallBack;
 import com.example.jdnew.httplibrary.CommonHttpClient;

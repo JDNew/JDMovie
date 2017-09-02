@@ -7,7 +7,7 @@ import com.example.jdnew.httplibrary.CommonHttpClient;
 import com.example.jdnew.httplibrary.CommonRequestParam;
 import com.example.jdnew.httplibrary.ICommonCallBackListener;
 import com.example.jdnew.jdmovie.common.Constant;
-import com.example.jdnew.jdmovie.http.Url;
+import com.example.jdnew.jdmovie.common.Url;
 import com.example.jdnew.jdmovie.model.HotSaleMovieBean;
 import com.example.jdnew.jdmovie.util.SharedUtil;
 import com.example.jdnew.jdmovie.view.IMainView;
@@ -28,6 +28,12 @@ public class MainPresenter implements BasePresenter {
 
     @Override
     public void start() {
+
+        getHotSaleMoiveList();
+
+    }
+
+    public void getHotSaleMoiveList() {
         CommonRequestParam requestParam = new CommonRequestParam();
         requestParam.put("locationId" , SharedUtil.getInt(mContext , Constant.SHARED_CITY_ID));
         CommonHttpClient.doGetAsync(Url.GET_SALING_MOVIES , requestParam , new CommonCallBack(new ICommonCallBackListener() {
@@ -41,7 +47,7 @@ public class MainPresenter implements BasePresenter {
                 Gson gson = new Gson();
                 HotSaleMovieBean hotSaleMovieBean = gson.fromJson(string , HotSaleMovieBean.class);
 
-mIMainView.getHotSalingMovieList(hotSaleMovieBean.getMovies());
+                mIMainView.getHotSalingMovieList(hotSaleMovieBean.getMovies());
             }
 
             @Override

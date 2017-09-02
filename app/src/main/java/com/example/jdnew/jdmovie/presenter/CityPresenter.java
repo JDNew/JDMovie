@@ -4,8 +4,8 @@ import android.app.Activity;
 
 import com.example.jdnew.httplibrary.CommonCallBack;
 import com.example.jdnew.httplibrary.ICommonCallBackListener;
-import com.example.jdnew.jdmovie.http.RequestCenter;
-import com.example.jdnew.jdmovie.http.Url;
+import com.example.jdnew.jdmovie.common.RequestCenter;
+import com.example.jdnew.jdmovie.common.Url;
 import com.example.jdnew.jdmovie.model.CityBean;
 import com.example.jdnew.jdmovie.view.ICityView;
 import com.google.gson.Gson;

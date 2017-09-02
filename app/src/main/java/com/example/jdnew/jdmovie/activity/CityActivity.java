@@ -21,6 +21,7 @@ public class CityActivity extends BaseActivity implements ICityView {
 
     private CityPresenter cityPresenter;
     private RecyclerView rl_city;
+    private CityAdapter cityAdapter;
 
 
     @Override
@@ -47,6 +48,9 @@ public class CityActivity extends BaseActivity implements ICityView {
 
     @Override
     public void initData() {
+        cityAdapter = new CityAdapter(this);
+        rl_city.setAdapter(cityAdapter);
+        rl_city.setLayoutManager(new LinearLayoutManager(this));
         cityPresenter = new CityPresenter(this , this);
         cityPresenter.start();
         setTitle("选择城市");
@@ -61,8 +65,7 @@ public class CityActivity extends BaseActivity implements ICityView {
 
     @Override
     public void getCityList(List<CityBean.PBean> cityList) {
-        rl_city.setAdapter(new CityAdapter(this , cityList));
-        rl_city.setLayoutManager(new LinearLayoutManager(this));
+       cityAdapter.updateData(cityList);
 
     }
 }

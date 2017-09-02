@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        app:titleTextColor="@color/white"
-        app:navigationIcon="@mipmap/ic_arrow_back_white"></android.support.v7.widget.Toolbar>
+        android:elevation="4dp"
+        app:navigationIcon="@mipmap/ic_arrow_back_white"
+        app:titleTextColor="@color/white"></android.support.v7.widget.Toolbar>
 
-</LinearLayout>
+</android.support.design.widget.AppBarLayout>
