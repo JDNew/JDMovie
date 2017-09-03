@@ -29,8 +29,10 @@ public class CommonCallBack implements Callback {
 
 
     private Handler mHandler = new Handler(Looper.getMainLooper()) {
+
         @Override
         public void handleMessage(Message msg) {
+
             super.handleMessage(msg);
             switch (msg.what) {
                 case MSG_ERROR:
@@ -42,6 +44,7 @@ public class CommonCallBack implements Callback {
 
                     break;
             }
+
         }
     };
 

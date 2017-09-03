@@ -29,18 +29,35 @@ public class WelcomePresenter implements BasePresenter {
     public void start() {
 
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                    if (SharedCenter.getHaveChooseCity(mContext)) {
+                        mContext.startActivity(new Intent(mContext, MainActivity.class));
+                    } else {
+                        mContext.startActivity(new Intent(mContext, CityActivity.class));
+                    }
+                    mContext.finish();
 
-       handler.postDelayed(new Runnable() {
-           @Override
-           public void run() {
-               if (SharedCenter.getHaveChooseCity(mContext)) {
-                   mContext.startActivity(new Intent(mContext, MainActivity.class));
-               } else {
-                   mContext.startActivity(new Intent(mContext, CityActivity.class));
-               }
-               mContext.finish();
-           }
-       } , 3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+//       handler.postDelayed(new Runnable() {
+//           @Override
+//           public void run() {
+//               if (SharedCenter.getHaveChooseCity(mContext)) {
+//                   mContext.startActivity(new Intent(mContext, MainActivity.class));
+//               } else {
+//                   mContext.startActivity(new Intent(mContext, CityActivity.class));
+//               }
+//               mContext.finish();
+//           }
+//       } , 3000);
 
     }
 }

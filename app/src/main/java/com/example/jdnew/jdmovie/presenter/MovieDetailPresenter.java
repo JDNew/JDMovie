@@ -21,7 +21,8 @@ public class MovieDetailPresenter implements BasePresenter {
 
     private Context mContext;
     private IMovieDetailView mIMovieDetailView;
-    public MovieDetailPresenter(Activity context , IMovieDetailView iMovieDetailView){
+
+    public MovieDetailPresenter(Activity context, IMovieDetailView iMovieDetailView) {
         this.mContext = context;
         this.mIMovieDetailView = iMovieDetailView;
     }
@@ -33,9 +34,9 @@ public class MovieDetailPresenter implements BasePresenter {
 
     public void getMovieDetail(int movieId) {
         CommonRequestParam commonRequestParam = new CommonRequestParam();
-        commonRequestParam.put("locationId" , SharedCenter.getCityId(mContext));
-        commonRequestParam.put("movieId" , movieId);
-        CommonHttpClient.doGetAsync(Url.GET_MOVIE_DETAIL , commonRequestParam , new CommonCallBack(new ICommonCallBackListener() {
+        commonRequestParam.put("locationId", SharedCenter.getCityId(mContext));
+        commonRequestParam.put("movieId", movieId);
+        CommonHttpClient.doGetAsync(Url.GET_MOVIE_DETAIL, commonRequestParam, new CommonCallBack(new ICommonCallBackListener() {
             @Override
             public void doLoading() {
 
@@ -44,8 +45,8 @@ public class MovieDetailPresenter implements BasePresenter {
             @Override
             public void getSuccess(String string) {
                 Gson gson = new Gson();
-                MovieDetailBean movieDetailBean = gson.fromJson(string , MovieDetailBean.class);
-mIMovieDetailView.getMovieDetail(movieDetailBean.getData());
+                MovieDetailBean movieDetailBean = gson.fromJson(string, MovieDetailBean.class);
+                mIMovieDetailView.getMovieDetail(movieDetailBean.getData());
             }
 
             @Override

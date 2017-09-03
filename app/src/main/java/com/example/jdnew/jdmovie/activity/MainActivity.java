@@ -25,6 +25,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         setContentView(R.layout.activity_main);
         initView();
         initToolbar();
+        hideToolbarNavigationIcon();
+        setTitle("正在热映");
         initData();
         setListener();
     }
@@ -33,20 +35,16 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void initView() {
 
         rl_movies = (PullToRefreshRecyclerView) findViewById(R.id.rl_movies);
-       rl_movies.setDoNotLoad(true);
+        rl_movies.setDoNotLoad(true);
     }
 
     @Override
     public void initData() {
         homeMovieAdapter = new HomeMovieAdapter(this);
-        rl_movies.setLayoutManager(new GridLayoutManager(this , 2));
-        rl_movies.addItemDecoration(new GridItemDecoration(20));
-
+        rl_movies.setLayoutManager(new GridLayoutManager(this, 3));
         rl_movies.setAdapter(homeMovieAdapter);
         mainPresenter = new MainPresenter(this, this);
         mainPresenter.start();
-
-
 
 
     }
@@ -70,7 +68,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void getHotSalingMovieList(List<HotSaleMovieBean.MoviesBean> moviesList) {
         rl_movies.updateDataComplete();
-            homeMovieAdapter.updateData(moviesList);
+        homeMovieAdapter.updateData(moviesList);
 
 
     }

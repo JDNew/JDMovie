@@ -308,7 +308,7 @@ public class MovieDetailBean {
             private int movieId;
             private String name;
             private String nameEn;
-            private int overallRating;
+            private String overallRating;
             private int personCount;
             private QuizGameBean quizGame;
             private String releaseArea;
@@ -471,11 +471,11 @@ public class MovieDetailBean {
                 this.nameEn = nameEn;
             }
 
-            public int getOverallRating() {
+            public String getOverallRating() {
                 return overallRating;
             }
 
-            public void setOverallRating(int overallRating) {
+            public void setOverallRating(String overallRating) {
                 this.overallRating = overallRating;
             }
 
@@ -862,7 +862,7 @@ public class MovieDetailBean {
 
             private int movieId;
             private int ranking;
-            private int todayBox;
+            private String todayBox;
             private String todayBoxDes;
             private String todayBoxDesUnit;
             private long totalBox;
@@ -885,11 +885,11 @@ public class MovieDetailBean {
                 this.ranking = ranking;
             }
 
-            public int getTodayBox() {
+            public String getTodayBox() {
                 return todayBox;
             }
 
-            public void setTodayBox(int todayBox) {
+            public void setTodayBox(String todayBox) {
                 this.todayBox = todayBox;
             }
 
@@ -1023,7 +1023,7 @@ public class MovieDetailBean {
             private int relateId;
             private String relatedUrl;
             private int type;
-            private List<?> goodsList;
+            private List<GoodsListBean> goodsList;
 
             public int getGoodsCount() {
                 return goodsCount;
@@ -1057,12 +1057,128 @@ public class MovieDetailBean {
                 this.type = type;
             }
 
-            public List<?> getGoodsList() {
+            public List<GoodsListBean> getGoodsList() {
                 return goodsList;
             }
 
-            public void setGoodsList(List<?> goodsList) {
+            public void setGoodsList(List<GoodsListBean> goodsList) {
                 this.goodsList = goodsList;
+            }
+
+            public static class GoodsListBean {
+                /**
+                 * background : #25ACBD
+                 * goodsId : 106149
+                 * goodsUrl : https://mall-wv.mtime.cn/#!/commerce/item/106149/
+                 * iconText : 新品
+                 * image : http://img5.mtime.cn/mg/2017/07/27/162659.58392377_294X294X4.jpg
+                 * longName : 品漫会战狼2子弹钥匙扣
+                 * marketPrice : 5800
+                 * marketPriceFormat : 58.00
+                 * minSalePrice : 4900
+                 * minSalePriceFormat : 49.00
+                 * name : 战狼2子弹钥匙扣
+                 */
+
+                private String background;
+                private int goodsId;
+                private String goodsUrl;
+                private String iconText;
+                private String image;
+                private String longName;
+                private int marketPrice;
+                private String marketPriceFormat;
+                private int minSalePrice;
+                private String minSalePriceFormat;
+                private String name;
+
+                public String getBackground() {
+                    return background;
+                }
+
+                public void setBackground(String background) {
+                    this.background = background;
+                }
+
+                public int getGoodsId() {
+                    return goodsId;
+                }
+
+                public void setGoodsId(int goodsId) {
+                    this.goodsId = goodsId;
+                }
+
+                public String getGoodsUrl() {
+                    return goodsUrl;
+                }
+
+                public void setGoodsUrl(String goodsUrl) {
+                    this.goodsUrl = goodsUrl;
+                }
+
+                public String getIconText() {
+                    return iconText;
+                }
+
+                public void setIconText(String iconText) {
+                    this.iconText = iconText;
+                }
+
+                public String getImage() {
+                    return image;
+                }
+
+                public void setImage(String image) {
+                    this.image = image;
+                }
+
+                public String getLongName() {
+                    return longName;
+                }
+
+                public void setLongName(String longName) {
+                    this.longName = longName;
+                }
+
+                public int getMarketPrice() {
+                    return marketPrice;
+                }
+
+                public void setMarketPrice(int marketPrice) {
+                    this.marketPrice = marketPrice;
+                }
+
+                public String getMarketPriceFormat() {
+                    return marketPriceFormat;
+                }
+
+                public void setMarketPriceFormat(String marketPriceFormat) {
+                    this.marketPriceFormat = marketPriceFormat;
+                }
+
+                public int getMinSalePrice() {
+                    return minSalePrice;
+                }
+
+                public void setMinSalePrice(int minSalePrice) {
+                    this.minSalePrice = minSalePrice;
+                }
+
+                public String getMinSalePriceFormat() {
+                    return minSalePriceFormat;
+                }
+
+                public void setMinSalePriceFormat(String minSalePriceFormat) {
+                    this.minSalePriceFormat = minSalePriceFormat;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
             }
         }
     }

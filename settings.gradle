@@ -1,1 +1,1 @@
-include ':app', ':httplibrary', ':jdrecyclerview'
+include ':app', ':httplibrary', ':jdrecyclerview', ':jdvideolibrary'

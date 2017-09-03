@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/httplibrary/httplibrary.iml" filepath="$PROJECT_DIR$/httplibrary/httplibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/jdrecyclerview/jdrecyclerview.iml" filepath="$PROJECT_DIR$/jdrecyclerview/jdrecyclerview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jdvideolibrary/jdvideolibrary.iml" filepath="$PROJECT_DIR$/jdvideolibrary/jdvideolibrary.iml" />
     </modules>
   </component>
 </project>
