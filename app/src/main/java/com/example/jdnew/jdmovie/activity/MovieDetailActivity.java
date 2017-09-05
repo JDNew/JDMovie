@@ -1,19 +1,15 @@
 package com.example.jdnew.jdmovie.activity;
 
 import android.content.Intent;
-import android.graphics.SurfaceTexture;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.Surface;
-import android.view.TextureView;
+import android.widget.LinearLayout;
 
 import com.example.jdnew.jdmovie.R;
 import com.example.jdnew.jdmovie.model.MovieDetailBean;
 import com.example.jdnew.jdmovie.presenter.MovieDetailPresenter;
 import com.example.jdnew.jdmovie.view.IMovieDetailView;
-
-import java.io.IOException;
+import com.example.jdnew.jdvideolibrary.JDVideoView;
 
 /**
  * Created by JDNew on 2017/9/2.
@@ -23,9 +19,10 @@ public class MovieDetailActivity extends BaseActivity implements IMovieDetailVie
 
     private MovieDetailPresenter movieDetailPresenter;
     private Intent intent;
-    private TextureView tv_video;
-    private MediaPlayer mMediaPlayer;
-    private Surface mSurface;
+
+    private JDVideoView jdVideoView;
+    private LinearLayout ll_container;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,8 +36,9 @@ public class MovieDetailActivity extends BaseActivity implements IMovieDetailVie
 
     @Override
     public void initView() {
-
-        tv_video = (TextureView) findViewById(R.id.tv_video);
+        jdVideoView = new JDVideoView(this);
+        ll_container = (LinearLayout) findViewById(R.id.ll_container);
+        ll_container.addView(jdVideoView);
 
     }
 
@@ -50,74 +48,21 @@ public class MovieDetailActivity extends BaseActivity implements IMovieDetailVie
         movieDetailPresenter = new MovieDetailPresenter(this, this);
         movieDetailPresenter.start();
         movieDetailPresenter.getMovieDetail(intent.getIntExtra("movieId", -1));
-        mMediaPlayer = new MediaPlayer();
 
 
     }
 
     @Override
     public void setListener() {
-        setTextureViewListener();
-        setMediaPlayerListener();
+
     }
 
-    private void setMediaPlayerListener() {
-        mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mMediaPlayer.start();
-            }
-        });
-        mMediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
-            @Override
-            public boolean onError(MediaPlayer mp, int what, int extra) {
-                return false;
-            }
-        });
-        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-
-            }
-        });
-    }
-
-    private void setTextureViewListener() {
-        tv_video.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
-            @Override
-            public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-                mSurface = new Surface(surface);
-                mMediaPlayer.setSurface(mSurface);
-            }
-
-            @Override
-            public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
-
-            }
-
-            @Override
-            public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
-                return false;
-            }
-
-            @Override
-            public void onSurfaceTextureUpdated(SurfaceTexture surface) {
-
-            }
-        });
-    }
 
     @Override
     public void getMovieDetail(MovieDetailBean.DataBean data) {
         String videoUrl = data.getBasic().getVideo().getUrl();
+        jdVideoView.setVideoUrl(videoUrl);
 
-        try {
-            mMediaPlayer.setDataSource(videoUrl);
-            mMediaPlayer.prepareAsync();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 
